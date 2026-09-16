@@ -107,7 +107,7 @@ export const CartDrawer: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
+    <div className="fixed inset-0 z-50 overflow-hidden w-full max-w-full">
       {/* Backdrop */}
       <div
         onClick={() => setCartOpen(false)}
@@ -115,16 +115,16 @@ export const CartDrawer: React.FC = () => {
       />
 
       {/* Slide-over Drawer Panel */}
-      <div className={`fixed inset-y-0 ${language === "ar" ? "left-0" : "right-0"} max-w-full flex`}>
-        <div className="w-full sm:w-[420px] max-w-full bg-[#FCFBFA] border-x border-[#E5E0D8] text-[#1E1D1B] flex flex-col justify-between shadow-[0_20px_50px_rgba(40,30,20,0.18)] animate-slide-in">
+      <div className={`fixed inset-y-0 ${language === "ar" ? "left-0" : "right-0"} w-full sm:w-auto max-w-full flex overflow-hidden`}>
+        <div className="w-full sm:w-[420px] max-w-full bg-[#FCFBFA] border-x border-[#E5E0D8] text-[#1E1D1B] flex flex-col justify-between shadow-[0_20px_50px_rgba(40,30,20,0.18)] animate-slide-in overflow-x-hidden">
           
           {/* Header */}
-          <div className="p-4 sm:p-5 border-b border-[#E5E0D8] flex items-center justify-between bg-[#F7F4EE]">
-            <div className="flex items-center gap-2.5">
-              <ShoppingBag className="w-5 h-5 text-[#1F4E3D]" />
-              <div>
-                <h2 className="text-base sm:text-lg font-bold text-[#1E1D1B]">{t.cart.title}</h2>
-                <p className="text-xs text-[#7A7269] font-medium">
+          <div className="p-4 sm:p-5 border-b border-[#E5E0D8] flex items-center justify-between bg-[#F7F4EE] w-full">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <ShoppingBag className="w-5 h-5 text-[#1F4E3D] flex-shrink-0" />
+              <div className="min-w-0">
+                <h2 className="text-base sm:text-lg font-bold text-[#1E1D1B] truncate">{t.cart.title}</h2>
+                <p className="text-xs text-[#7A7269] font-medium truncate">
                   {t.cart.itemsAllocated(items.length)}
                 </p>
               </div>
@@ -132,26 +132,28 @@ export const CartDrawer: React.FC = () => {
 
             <button
               onClick={() => setCartOpen(false)}
-              className="rounded-full p-2 text-[#6B645C] hover:text-[#1E1D1B] hover:bg-[#ECE7DE] transition-colors cursor-pointer"
+              className="rounded-full p-2 text-[#6B645C] hover:text-[#1E1D1B] hover:bg-[#ECE7DE] transition-colors cursor-pointer flex-shrink-0"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Free Shipping Progress Indicator */}
-          <div className="px-4 sm:px-5 py-2.5 bg-[#F2ECE1] border-b border-[#DDD5C7]">
-            <div className="flex items-center justify-between text-xs mb-1 font-medium">
-              <span className="flex items-center gap-1.5 text-[#2C2723]">
-                <Truck className="w-3.5 h-3.5 text-[#1F4E3D]" />
-                {remaining === 0 ? (
-                  <span className="font-bold text-[#1F4E3D]">{t.cart.freeCourierUnlocked}</span>
-                ) : (
-                  <span>{t.cart.addMoreForFreeCourier(remaining)}</span>
-                )}
+          {/* Free Shipping Progress Indicator (Strictly Responsive & No Overflow) */}
+          <div className="w-full max-w-full px-4 sm:px-5 py-3 bg-[#F2ECE1] border-b border-[#DDD5C7] overflow-hidden">
+            <div className="flex items-center justify-between gap-2 text-xs mb-1.5 font-medium w-full">
+              <span className="flex items-center gap-1.5 text-[#2C2723] min-w-0 truncate">
+                <Truck className="w-3.5 h-3.5 text-[#1F4E3D] flex-shrink-0" />
+                <span className="truncate">
+                  {remaining === 0 ? (
+                    <span className="font-bold text-[#1F4E3D]">{t.cart.freeCourierUnlocked}</span>
+                  ) : (
+                    <span>{t.cart.addMoreForFreeCourier(remaining)}</span>
+                  )}
+                </span>
               </span>
-              <span className="font-bold text-[#1F4E3D]">{Math.round(progress)}%</span>
+              <span className="font-bold text-[#1F4E3D] flex-shrink-0 pl-2 pr-1">{Math.round(progress)}%</span>
             </div>
-            <div className="h-1.5 w-full bg-[#DDD5C7] rounded-full overflow-hidden">
+            <div className="h-2 w-full max-w-full bg-[#DDD5C7] rounded-full overflow-hidden">
               <div
                 className="h-full bg-[#1F4E3D] transition-all duration-500 rounded-full"
                 style={{ width: `${progress}%` }}
@@ -160,7 +162,7 @@ export const CartDrawer: React.FC = () => {
           </div>
 
           {/* Items List */}
-          <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3 custom-scrollbar">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-3 custom-scrollbar w-full">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-3">
                 <div className="w-14 h-14 rounded-2xl bg-[#ECE7DE] flex items-center justify-center text-[#6B645C] border border-[#DCD5C9]">
@@ -184,7 +186,7 @@ export const CartDrawer: React.FC = () => {
                 {items.map((item) => (
                   <div
                     key={item.id}
-                    className="flex gap-3 rounded-2xl bg-[#F7F4EE] p-3 border border-[#E5DFD5] transition-all hover:border-[#DCD5C9]"
+                    className="flex gap-3 rounded-2xl bg-[#F7F4EE] p-3 border border-[#E5DFD5] transition-all hover:border-[#DCD5C9] w-full"
                   >
                     {/* Item Image */}
                     <div className="relative h-18 w-18 flex-shrink-0 overflow-hidden rounded-xl bg-[#F5F2ED] border border-[#EAE4DC]">
@@ -197,34 +199,40 @@ export const CartDrawer: React.FC = () => {
                     </div>
 
                     {/* Details */}
-                    <div className="flex-1 flex flex-col justify-between">
+                    <div className="flex-1 flex flex-col justify-between min-w-0">
                       <div>
                         <div className="flex items-start justify-between gap-1">
-                          <h4 className="text-xs sm:text-sm font-bold text-[#1E1D1B] line-clamp-1">
+                          <h4 className="text-xs sm:text-sm font-bold text-[#1E1D1B] line-clamp-1 truncate">
                             {item.name}
                           </h4>
                           <button
                             onClick={() => removeItem(item.id)}
-                            className="text-[#8C827A] hover:text-rose-600 transition-colors p-0.5 cursor-pointer"
+                            className="text-[#8C827A] hover:text-rose-600 transition-colors p-0.5 cursor-pointer flex-shrink-0"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
                         </div>
                         <div className="flex items-center gap-1.5 mt-0.5 text-xs text-[#7A7269]">
-                          <span className="bg-[#ECE7DE] text-[#2C2723] px-1.5 py-0.5 rounded font-bold">
+                          <span className="bg-[#ECE7DE] text-[#2C2723] px-1.5 py-0.5 rounded font-bold text-[10px] sm:text-xs">
                             {item.selectedSize}
                           </span>
                           <span>•</span>
-                          <span>{item.selectedColor}</span>
+                          <span className="truncate">{item.selectedColor}</span>
                         </div>
                       </div>
 
-                      {/* Quantity & Price */}
-                      <div className="flex items-center justify-between mt-2 pt-1 border-t border-[#E5DFD5]">
-                        <div className="flex items-center gap-1.5 rounded-lg bg-white px-1.5 py-0.5 border border-[#DCD5C9]">
+                      <div className="flex items-center justify-between pt-2">
+                        <span className="text-xs sm:text-sm font-extrabold text-[#1E1D1B]">
+                          {(item.priceDZD * item.quantity).toLocaleString()} DZD
+                        </span>
+
+                        {/* Qty Switcher */}
+                        <div className="flex items-center gap-1.5 bg-white px-2 py-1 rounded-lg border border-[#E5DFD5]">
                           <button
-                            onClick={() => updateQuantity(item.id, -1)}
-                            className="p-0.5 text-[#6B645C] hover:text-[#1E1D1B] cursor-pointer"
+                            onClick={() =>
+                              updateQuantity(item.id, Math.max(1, item.quantity - 1))
+                            }
+                            className="text-[#6B645C] hover:text-[#1E1D1B] cursor-pointer"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
@@ -232,61 +240,39 @@ export const CartDrawer: React.FC = () => {
                             {item.quantity}
                           </span>
                           <button
-                            onClick={() => updateQuantity(item.id, 1)}
-                            className="p-0.5 text-[#6B645C] hover:text-[#1E1D1B] cursor-pointer"
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            className="text-[#6B645C] hover:text-[#1E1D1B] cursor-pointer"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
                         </div>
-
-                        <span className="text-xs font-bold text-[#1E1D1B]">
-                          {(item.priceDZD * item.quantity).toLocaleString()} DZD
-                        </span>
                       </div>
                     </div>
                   </div>
                 ))}
 
-                {/* Delivery Form Toggle */}
-                <div className="pt-1">
+                {/* Optional Delivery Address Form Toggle */}
+                <div className="pt-2">
                   <button
                     onClick={() => setShowAddressForm(!showAddressForm)}
-                    className="w-full flex items-center justify-between rounded-xl bg-[#F7F4EE] p-2.5 text-xs font-medium text-[#3D3833] border border-[#E5DFD5] hover:bg-[#ECE7DE] transition-colors cursor-pointer"
+                    className="text-xs text-[#1F4E3D] hover:underline font-semibold flex items-center gap-1 cursor-pointer"
                   >
                     <span>{t.cart.deliveryToggle}</span>
-                    <span className="text-[#1F4E3D] font-bold">
-                      {showAddressForm ? "▲" : "▼"}
-                    </span>
                   </button>
 
                   {showAddressForm && (
-                    <div className="mt-2 space-y-2 rounded-2xl bg-[#F7F4EE] p-3.5 border border-[#E5DFD5]">
-                      <div>
-                        <label className="block text-xs text-[#6B645C] mb-0.5 font-medium">
-                          {t.cart.fullName}
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="Karim Mansouri"
-                          value={customerDetails.customerName || ""}
-                          onChange={(e) =>
-                            setCustomerDetails({ customerName: e.target.value })
-                          }
-                          className="w-full rounded-lg bg-white px-2.5 py-1.5 text-xs text-[#1E1D1B] border border-[#DCD5C9] focus:border-[#1E1D1B] focus:outline-none"
-                        />
-                      </div>
-
+                    <div className="mt-3 space-y-2.5 rounded-2xl bg-[#F7F4EE] p-3.5 border border-[#E5DFD5] animate-fade-in text-xs">
                       <div className="grid grid-cols-2 gap-2">
                         <div>
                           <label className="block text-xs text-[#6B645C] mb-0.5 font-medium">
-                            {t.cart.phone}
+                            {t.cart.fullName}
                           </label>
                           <input
                             type="text"
-                            placeholder="05 55 12 34 56"
-                            value={customerDetails.phone || ""}
+                            placeholder="Amine Benali"
+                            value={customerDetails.customerName || ""}
                             onChange={(e) =>
-                              setCustomerDetails({ phone: e.target.value })
+                              setCustomerDetails({ customerName: e.target.value })
                             }
                             className="w-full rounded-lg bg-white px-2.5 py-1.5 text-xs text-[#1E1D1B] border border-[#DCD5C9] focus:border-[#1E1D1B] focus:outline-none"
                           />
@@ -330,7 +316,7 @@ export const CartDrawer: React.FC = () => {
 
           {/* Footer Checkout Module */}
           {items.length > 0 && (
-            <div className="p-4 sm:p-5 border-t border-[#E5E0D8] bg-[#F7F4EE] space-y-3">
+            <div className="p-4 sm:p-5 border-t border-[#E5E0D8] bg-[#F7F4EE] space-y-3 w-full">
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs text-[#6B645C] font-medium">
                   <span>{t.cart.subtotal}</span>
@@ -355,9 +341,9 @@ export const CartDrawer: React.FC = () => {
                 onClick={handleWhatsAppCheckout}
                 className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#1F4E3D] hover:bg-[#163A2E] py-3.5 text-xs font-semibold uppercase tracking-wider text-white transition-all shadow-md shadow-[#1F4E3D]/20 active:scale-98 cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 fill-white" />
+                <MessageCircle className="w-4 h-4 fill-white flex-shrink-0" />
                 <span>{t.cart.checkoutWhatsApp}</span>
-                <ArrowRight className="w-4 h-4 ml-0.5" />
+                <ArrowRight className="w-4 h-4 ml-0.5 flex-shrink-0" />
               </button>
 
               {/* Secondary Copy Button */}
@@ -381,15 +367,15 @@ export const CartDrawer: React.FC = () => {
 
                 <button
                   onClick={clearCart}
-                  className="rounded-xl border border-[#DCD5C9] bg-white px-3 py-2 text-xs text-[#8C827A] hover:text-rose-600 font-medium transition-colors cursor-pointer"
+                  className="rounded-xl border border-[#DCD5C9] bg-white px-3 py-2 text-xs text-[#8C827A] hover:text-rose-600 font-medium transition-colors cursor-pointer flex-shrink-0"
                   title="Vider le panier"
                 >
                   {t.cart.reset}
                 </button>
               </div>
 
-              <div className="flex items-center justify-center gap-1.5 text-xs text-[#8C827A] font-medium">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#1F4E3D]" />
+              <div className="flex items-center justify-center gap-1.5 text-[11px] sm:text-xs text-[#8C827A] font-medium text-center">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#1F4E3D] flex-shrink-0" />
                 <span>{t.cart.stockLockNotice}</span>
               </div>
             </div>

@@ -28,16 +28,16 @@ export const Navbar: React.FC = () => {
         <a
           href="#"
           onClick={() => sound.playClick()}
-          className="flex items-center gap-2 sm:gap-3 group flex-shrink-0"
+          className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-shrink"
         >
           <span className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl sm:rounded-2xl bg-[#1E1D1B] text-white font-black text-xs sm:text-sm flex items-center justify-center shadow-xs group-hover:bg-[#9E8468] transition-colors flex-shrink-0">
             {STORE_CONFIG.brandMonogram}
           </span>
-          <div className="flex flex-col">
-            <span className="text-base sm:text-xl font-black tracking-tight text-[#1E1D1B] leading-none">
+          <div className="flex flex-col min-w-0">
+            <span className="text-sm sm:text-xl font-black tracking-tight text-[#1E1D1B] leading-none truncate">
               {STORE_CONFIG.brandName}
             </span>
-            <span className="text-[10px] sm:text-xs text-[#8C8377] font-medium mt-0.5 sm:mt-1">
+            <span className="text-[10px] sm:text-xs text-[#8C8377] font-medium mt-0.5 sm:mt-1 truncate">
               {t.nav.officialDrop}
             </span>
           </div>

@@ -10,8 +10,8 @@ import { CartDrawer } from "@/components/ui/CartDrawer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#F5F3EF] py-2 sm:py-6 md:py-8 px-2.5 sm:px-6 lg:px-10 flex flex-col items-center">
-      <div className="w-full max-w-7xl bg-[#FCFBFA] rounded-2xl sm:rounded-3xl md:rounded-[36px] border border-[#E5E0D8] shadow-[0_8px_30px_rgba(40,30,20,0.06)] p-3.5 sm:p-7 md:p-12 transition-all">
+    <main className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#F5F3EF] p-0 sm:py-6 sm:px-6 lg:px-10 flex flex-col items-center">
+      <div className="w-full max-w-7xl bg-[#FCFBFA] rounded-none sm:rounded-3xl md:rounded-[36px] border-0 sm:border border-[#E5E0D8] shadow-none sm:shadow-[0_8px_30px_rgba(40,30,20,0.06)] px-4 py-4 sm:p-7 md:p-12 transition-all overflow-hidden">
         {/* Navigation */}
         <Navbar />
 

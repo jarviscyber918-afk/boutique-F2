@@ -21,7 +21,7 @@ export const FaqSection: React.FC = () => {
   const cleanPhone = STORE_CONFIG.whatsAppPhone.replace(/[^0-9]/g, "");
 
   return (
-    <section className="py-16 sm:py-24 border-t border-[#E5E0D8] max-w-3xl mx-auto w-full">
+    <section className="py-8 sm:py-16 border-t border-[#E5E0D8] max-w-3xl mx-auto w-full">
       
       {/* Header */}
       <motion.div
@@ -29,22 +29,22 @@ export const FaqSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center space-y-3 mb-10"
+        className="text-center space-y-2.5 mb-6 sm:mb-10"
       >
-        <div className="inline-flex items-center gap-2 rounded-full bg-[#ECE7DE] px-4 py-1.5 text-xs font-semibold text-[#2C2723] border border-[#DCD5C9]">
+        <div className="inline-flex items-center gap-2 rounded-full bg-[#ECE7DE] px-3.5 py-1 text-xs font-semibold text-[#2C2723] border border-[#DCD5C9]">
           <HelpCircle className="w-3.5 h-3.5 text-[#6B645C]" />
           <span>{t.faq.tag}</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[#1E1D1B]">
+        <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-[#1E1D1B]">
           {t.faq.title}
         </h2>
-        <p className="text-sm text-[#6B645C] font-normal max-w-md mx-auto">
+        <p className="text-xs sm:text-sm text-[#6B645C] font-normal max-w-md mx-auto">
           {t.faq.description}
         </p>
       </motion.div>
 
       {/* Accordion List */}
-      <div className="space-y-3">
+      <div className="space-y-2.5 sm:space-y-3">
         {faqItems.map((item, index) => {
           const isOpen = openIndex === index;
           return (
@@ -66,18 +66,18 @@ export const FaqSection: React.FC = () => {
             >
               <button
                 onClick={() => toggleAccordion(index)}
-                className="w-full flex items-center justify-between p-5 text-left text-sm sm:text-base font-bold text-[#1E1D1B] cursor-pointer"
+                className="w-full flex items-center justify-between p-4 sm:p-5 text-left text-xs sm:text-base font-bold text-[#1E1D1B] cursor-pointer"
               >
                 <span>{item.question}</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-[#7A7269] transition-transform duration-200 ml-3 flex-shrink-0 ${
+                  className={`w-4 h-4 text-[#7A7269] transition-transform duration-200 ml-2.5 flex-shrink-0 ${
                     isOpen ? "rotate-180 text-[#1E1D1B]" : ""
                   }`}
                 />
               </button>
 
               {isOpen && (
-                <div className="px-5 pb-5 text-xs sm:text-sm text-[#6B645C] font-normal leading-relaxed border-t border-[#EAE4DC] pt-3.5">
+                <div className="px-4 sm:px-5 pb-4 sm:pb-5 text-xs sm:text-sm text-[#6B645C] font-normal leading-relaxed border-t border-[#EAE4DC] pt-3">
                   {item.answer}
                 </div>
               )}
@@ -92,20 +92,20 @@ export const FaqSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="mt-10 rounded-3xl bg-[#F2ECE1] p-6 sm:p-7 border border-[#DDD5C7] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs"
+        className="mt-6 sm:mt-10 rounded-2xl sm:rounded-3xl bg-[#F2ECE1] p-5 sm:p-7 border border-[#DDD5C7] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 shadow-xs"
       >
         <div>
-          <h4 className="text-base font-bold text-[#1E1D1B]">{t.faq.helpTitle}</h4>
-          <p className="text-xs sm:text-sm text-[#5A524A] font-normal mt-1">{t.faq.helpDesc}</p>
+          <h4 className="text-sm sm:text-base font-bold text-[#1E1D1B]">{t.faq.helpTitle}</h4>
+          <p className="text-xs sm:text-sm text-[#5A524A] font-normal mt-0.5">{t.faq.helpDesc}</p>
         </div>
         <a
           href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent(t.whatsapp.confirmRequest)}`}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => sound.playClick()}
-          className="inline-flex items-center gap-2 rounded-2xl bg-[#1F4E3D] hover:bg-[#163A2E] px-5 py-3 text-xs font-semibold text-white whitespace-nowrap shadow-sm shadow-[#1F4E3D]/20 transition-all active:scale-95 cursor-pointer"
+          className="inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl bg-[#1F4E3D] hover:bg-[#163A2E] px-4 sm:px-5 py-3 text-xs font-semibold text-white whitespace-nowrap shadow-sm shadow-[#1F4E3D]/20 transition-all active:scale-95 cursor-pointer"
         >
-          <MessageCircle className="w-4 h-4 fill-white" />
+          <MessageCircle className="w-4 h-4 fill-white flex-shrink-0" />
           <span>{t.faq.helpBtn}</span>
         </a>
       </motion.div>

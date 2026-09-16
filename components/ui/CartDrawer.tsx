@@ -115,8 +115,8 @@ export const CartDrawer: React.FC = () => {
       />
 
       {/* Slide-over Drawer Panel */}
-      <div className={`fixed inset-y-0 ${language === "ar" ? "left-0 pr-6 sm:pr-10" : "right-0 pl-6 sm:pl-10"} max-w-full flex`}>
-        <div className="w-screen max-w-md bg-[#FCFBFA] border-x border-[#E5E0D8] text-[#1E1D1B] flex flex-col justify-between shadow-[0_20px_50px_rgba(40,30,20,0.18)] animate-slide-in">
+      <div className={`fixed inset-y-0 ${language === "ar" ? "left-0" : "right-0"} max-w-full flex`}>
+        <div className="w-full sm:w-[420px] max-w-full bg-[#FCFBFA] border-x border-[#E5E0D8] text-[#1E1D1B] flex flex-col justify-between shadow-[0_20px_50px_rgba(40,30,20,0.18)] animate-slide-in">
           
           {/* Header */}
           <div className="p-4 sm:p-5 border-b border-[#E5E0D8] flex items-center justify-between bg-[#F7F4EE]">

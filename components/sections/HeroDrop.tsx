@@ -40,28 +40,28 @@ export const HeroDrop: React.FC = () => {
   const cleanPhone = STORE_CONFIG.whatsAppPhone.replace(/[^0-9]/g, "");
 
   return (
-    <section className="relative w-full py-8 sm:py-16 md:py-20 border-b border-[#E5E0D8]">
+    <section className="relative w-full py-4 sm:py-12 md:py-16 border-b border-[#E5E0D8]">
       
       {/* Signature Badges */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="flex flex-wrap items-center gap-3 mb-8"
+        className="flex flex-wrap items-center gap-2 sm:gap-3 mb-5 sm:mb-8"
       >
         {/* Badge 1: Muted leather indicator */}
-        <div className="inline-flex items-center gap-2.5 rounded-full bg-[#F4EFEA] px-4 py-1.5 text-xs font-semibold text-[#2C2723] border border-[#E2D8CC] shadow-2xs">
-          <span className="relative flex h-2 w-2">
+        <div className="inline-flex items-center gap-2 rounded-full bg-[#F4EFEA] px-3 sm:px-4 py-1 sm:py-1.5 text-[11px] sm:text-xs font-semibold text-[#2C2723] border border-[#E2D8CC] shadow-2xs">
+          <span className="relative flex h-2 w-2 flex-shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#9E8468] opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#785E42]" />
           </span>
-          <span className="tracking-normal">{t.hero.badge1}</span>
+          <span className="tracking-normal truncate">{t.hero.badge1}</span>
         </div>
 
         {/* Badge 2: Burnished brass/bronze badge */}
-        <div className="inline-flex items-center gap-2 rounded-full bg-[#ECE7DE] px-4 py-1.5 text-xs font-semibold text-[#4A433B] border border-[#DCD5C9] shadow-2xs">
-          <Sparkles className="w-3.5 h-3.5 text-[#9E8468] fill-[#9E8468]" />
-          <span className="tracking-normal">{t.hero.badge2}</span>
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full bg-[#ECE7DE] px-3 sm:px-4 py-1 sm:py-1.5 text-[11px] sm:text-xs font-semibold text-[#4A433B] border border-[#DCD5C9] shadow-2xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#9E8468] fill-[#9E8468] flex-shrink-0" />
+          <span className="tracking-normal truncate">{t.hero.badge2}</span>
         </div>
       </motion.div>
 
@@ -70,12 +70,12 @@ export const HeroDrop: React.FC = () => {
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="space-y-2"
+        className="space-y-1 sm:space-y-2"
       >
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-[#1E1D1B] leading-[0.98]">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-[#1E1D1B] leading-[1.02]">
           {t.hero.headline1}
         </h1>
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#1E1D1B] via-[#5C5349] to-[#9E8468] leading-[0.98]">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#1E1D1B] via-[#5C5349] to-[#9E8468] leading-[1.02]">
           {t.hero.headline2}
         </h1>
       </motion.div>
@@ -85,19 +85,19 @@ export const HeroDrop: React.FC = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 mt-8 sm:mt-12 items-end"
+        className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 mt-6 sm:mt-10 items-end"
       >
         {/* Narrative & Dual Action Buttons */}
-        <div className="lg:col-span-7 space-y-8">
-          <p className="text-base sm:text-lg md:text-xl text-[#6B645C] font-normal leading-relaxed max-w-xl">
+        <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          <p className="text-sm sm:text-lg md:text-xl text-[#6B645C] font-normal leading-relaxed max-w-xl">
             {t.hero.description}
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-1">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
             {/* Primary Action Button */}
             <button
               onClick={scrollToCollection}
-              className="inline-flex items-center gap-2 rounded-full bg-[#1E1D1B] hover:bg-[#2B2825] text-white px-8 py-4 text-sm font-semibold uppercase tracking-wider transition-all shadow-md shadow-[#1E1D1B]/15 active:scale-95 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl sm:rounded-full bg-[#1E1D1B] hover:bg-[#2B2825] text-white px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all shadow-md shadow-[#1E1D1B]/15 active:scale-95 cursor-pointer"
             >
               <span>{t.hero.primaryCta}</span>
               <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
@@ -109,23 +109,23 @@ export const HeroDrop: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => sound.playClick()}
-              className="inline-flex items-center gap-2 rounded-full bg-[#1F4E3D] hover:bg-[#163A2E] text-white px-7 py-4 text-sm font-semibold uppercase tracking-wider transition-all shadow-md shadow-[#1F4E3D]/20 active:scale-95 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl sm:rounded-full bg-[#1F4E3D] hover:bg-[#163A2E] text-white px-5 sm:px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all shadow-md shadow-[#1F4E3D]/20 active:scale-95 cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4 fill-white" />
+              <MessageCircle className="w-4 h-4 fill-white flex-shrink-0" />
               <span>{t.hero.secondaryCta}</span>
             </a>
           </div>
         </div>
 
         {/* Live Allocation & Timer Box */}
-        <div className="lg:col-span-5">
-          <div className="rounded-3xl bg-[#F7F4EE] p-6 sm:p-7 border border-[#E5DFD5] shadow-xs space-y-4">
-            <div className="flex items-center justify-between text-xs text-[#8C8377] border-b border-[#E5DFD5] pb-3.5">
+        <div className="lg:col-span-5 w-full">
+          <div className="rounded-2xl sm:rounded-3xl bg-[#F7F4EE] p-4 sm:p-7 border border-[#E5DFD5] shadow-xs space-y-3 sm:space-y-4">
+            <div className="flex items-center justify-between text-xs text-[#8C8377] border-b border-[#E5DFD5] pb-3">
               <span className="flex items-center gap-2 font-semibold text-[#2C2723]">
-                <Clock className="w-4 h-4 text-[#9E8468]" />
+                <Clock className="w-4 h-4 text-[#9E8468] flex-shrink-0" />
                 <span>{t.hero.countdownLabel}</span>
               </span>
-              <span className="font-bold text-[#1E1D1B] text-sm tracking-wider">
+              <span className="font-bold text-[#1E1D1B] text-xs sm:text-sm tracking-wider">
                 {String(timeLeft.hours).padStart(2, "0")}:{String(timeLeft.minutes).padStart(2, "0")}:{String(timeLeft.seconds).padStart(2, "0")}
               </span>
             </div>
@@ -135,14 +135,14 @@ export const HeroDrop: React.FC = () => {
                 <span className="text-[#6B645C] font-medium">{t.hero.quotaLabel}</span>
                 <span className="text-[#1F4E3D] font-bold">{t.hero.quotaAllocated}</span>
               </div>
-              <div className="h-2.5 w-full bg-[#E5DFD5] rounded-full overflow-hidden">
+              <div className="h-2 sm:h-2.5 w-full bg-[#E5DFD5] rounded-full overflow-hidden">
                 <div className="h-full bg-gradient-to-r from-[#9E8468] to-[#6B563F] w-[87%] rounded-full" />
               </div>
             </div>
 
-            <div className="flex items-center justify-between text-xs text-[#8C8377] pt-1">
+            <div className="flex items-center justify-between text-[11px] sm:text-xs text-[#8C8377] pt-1">
               <span className="flex items-center gap-1.5 text-[#4A433B] font-medium">
-                <ShieldCheck className="w-4 h-4 text-[#1F4E3D]" />
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1F4E3D] flex-shrink-0" />
                 <span>{t.hero.guaranteedStock}</span>
               </span>
               <span className="text-[#8C8377] font-medium">{t.hero.cities}</span>

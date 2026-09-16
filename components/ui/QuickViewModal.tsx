@@ -145,7 +145,7 @@ export const QuickViewModal: React.FC = () => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-10 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 md:p-10 overflow-y-auto">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -161,17 +161,17 @@ export const QuickViewModal: React.FC = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#FCFBFA] border border-[#E5E0D8] shadow-[0_20px_50px_rgba(40,30,20,0.18)] text-[#1E1D1B] p-5 sm:p-8 custom-scrollbar my-auto"
+          className="relative z-10 w-full max-w-2xl max-h-[94vh] overflow-y-auto rounded-2xl sm:rounded-3xl bg-[#FCFBFA] border border-[#E5E0D8] shadow-[0_20px_50px_rgba(40,30,20,0.18)] text-[#1E1D1B] p-4 sm:p-8 custom-scrollbar my-auto"
         >
           {/* Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-[#ECE7DE] text-[#6B645C] hover:bg-[#E2DDD3] hover:text-[#1E1D1B] transition-colors cursor-pointer"
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-[#ECE7DE] text-[#6B645C] hover:bg-[#E2DDD3] hover:text-[#1E1D1B] transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-8">
             
             {/* Left Column: Image Preview Stage */}
             <div className="sm:col-span-5 flex flex-col gap-3">

@@ -55,7 +55,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group bg-white border border-[#E5E0D8] shadow-[0_4px_20px_rgba(40,30,20,0.04)] rounded-3xl p-4 sm:p-5 transition-all duration-300 hover:shadow-[0_16px_36px_rgba(40,30,20,0.09)] hover:-translate-y-1 hover:border-[#D0C7BC] relative flex flex-col justify-between"
+      className="group bg-white border border-[#E5E0D8] shadow-[0_4px_20px_rgba(40,30,20,0.04)] rounded-2xl sm:rounded-3xl p-4 sm:p-5 transition-all duration-300 hover:shadow-[0_16px_36px_rgba(40,30,20,0.09)] hover:-translate-y-1 hover:border-[#D0C7BC] relative flex flex-col justify-between w-full"
     >
       {/* Top Badges */}
       <div className="absolute top-6 left-6 right-6 z-10 flex items-center justify-between pointer-events-none">
@@ -71,23 +71,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         )}
 
         {product.stockCount <= 6 && (
-          <span className="hidden xs:flex items-center gap-1 rounded-full bg-[#FBF0EE]/95 px-2.5 py-1 text-[10px] sm:text-xs font-semibold text-[#8C3A33] border border-[#F2D1CE] shadow-2xs backdrop-blur-xs">
+          <span className="flex items-center gap-1 rounded-full bg-[#FBF0EE]/95 px-2.5 py-1 text-[10px] sm:text-xs font-semibold text-[#8C3A33] border border-[#F2D1CE] shadow-2xs backdrop-blur-xs">
             <Flame className="w-3 h-3 text-[#B83D30] animate-pulse" />
             <span>{product.stockCount} {t.card.remaining}</span>
           </span>
         )}
       </div>
 
-      {/* Image Wrapper with Tinted Inner Frame & Subtle Border */}
+      {/* Image Wrapper with Tinted Inner Frame & Full Width Preserved Aspect Ratio */}
       <div
         onClick={handleOpenBuyModal}
-        className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-[#F5F2ED] border border-[#EAE4DC] cursor-pointer"
+        className="relative aspect-[4/5] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-[#F5F2ED] border border-[#EAE4DC] cursor-pointer"
       >
         <Image
           src={displayImage}
           alt={product.name}
           fill
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-106"
         />
         
@@ -100,10 +100,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
       </div>
 
-      {/* Product Details */}
+      {/* Product Details (Stacked Cleanly) */}
       <div className="mt-4 flex flex-col gap-2.5">
         <div className="cursor-pointer" onClick={handleOpenBuyModal}>
-          <h3 className="text-sm sm:text-base font-bold text-[#1E1D1B] line-clamp-1 group-hover:text-[#9E8468] transition-colors">
+          <h3 className="text-base sm:text-lg font-bold text-[#1E1D1B] line-clamp-1 group-hover:text-[#9E8468] transition-colors">
             {product.name}
           </h3>
           <p className="text-xs text-[#8C8377] line-clamp-1 mt-0.5 font-normal">
@@ -114,7 +114,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Pricing */}
         <div className="flex items-baseline justify-between gap-1 pt-0.5">
           <div className="flex items-baseline gap-1.5">
-            <span className="text-sm sm:text-base font-extrabold text-[#1E1D1B]">
+            <span className="text-base sm:text-lg font-extrabold text-[#1E1D1B]">
               {product.priceDZD.toLocaleString()} DZD
             </span>
             <span className="text-xs text-[#8C8377] font-medium">
@@ -123,7 +123,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
 
           {product.originalPriceDZD && (
-            <span className="hidden sm:inline text-xs text-[#A0988D] line-through">
+            <span className="text-xs text-[#A0988D] line-through">
               {product.originalPriceDZD.toLocaleString()} DZD
             </span>
           )}
@@ -140,7 +140,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                   sound.playSwitch();
                   setSelectedColorIdx(idx);
                 }}
-                className={`h-4.5 w-4.5 rounded-full border transition-all cursor-pointer ${
+                className={`h-5 w-5 rounded-full border transition-all cursor-pointer ${
                   selectedColorIdx === idx
                     ? "border-[#1E1D1B] scale-115 ring-2 ring-[#1E1D1B]/20"
                     : "border-[#E5E0D8] opacity-75 hover:opacity-100"
@@ -150,7 +150,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               />
             ))}
           </div>
-          <span className="text-xs text-[#8C8377] font-medium truncate max-w-[90px]">
+          <span className="text-xs text-[#8C8377] font-medium truncate max-w-[120px]">
             {activeColor.name}
           </span>
         </div>
@@ -165,7 +165,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 sound.playSwitch();
                 setSelectedSize(size);
               }}
-              className={`rounded-xl px-2.5 sm:px-3 py-1 text-xs font-semibold transition-all cursor-pointer ${
+              className={`rounded-xl px-3 py-1 text-xs font-semibold transition-all cursor-pointer ${
                 selectedSize === size
                   ? "bg-[#1E1D1B] text-white shadow-xs"
                   : "bg-[#ECE7DE] text-[#4A433B] hover:bg-[#E2DDD3]"
@@ -179,16 +179,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* 1-Click WhatsApp Direct CTA (Opens Buy Modal) */}
         <button
           onClick={handleOpenBuyModal}
-          className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1F4E3D] hover:bg-[#163A2E] py-3 text-xs font-semibold text-white transition-all shadow-sm shadow-[#1F4E3D]/15 active:scale-98 cursor-pointer"
+          className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1F4E3D] hover:bg-[#163A2E] py-3 text-xs sm:text-sm font-semibold text-white transition-all shadow-sm shadow-[#1F4E3D]/15 active:scale-98 cursor-pointer"
         >
-          <MessageCircle className="w-3.5 h-3.5 fill-white" />
+          <MessageCircle className="w-4 h-4 fill-white flex-shrink-0" />
           <span className="truncate">{t.card.orderViaWhatsApp}</span>
         </button>
 
         {/* Add to Bag */}
         <button
           onClick={handleAddToCart}
-          className="flex w-full items-center justify-center gap-1.5 rounded-xl py-1.5 text-xs font-semibold text-[#6B645C] hover:text-[#1E1D1B] hover:bg-[#ECE7DE] transition-colors cursor-pointer"
+          className="flex w-full items-center justify-center gap-1.5 rounded-xl py-2 text-xs font-semibold text-[#6B645C] hover:text-[#1E1D1B] hover:bg-[#ECE7DE] transition-colors cursor-pointer"
         >
           {isAdded ? (
             <>

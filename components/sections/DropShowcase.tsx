@@ -58,28 +58,28 @@ export const DropShowcase: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 pt-4 border-b border-[#E5E0D8]"
+        className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 pb-4 sm:pb-6 pt-3 sm:pt-4 border-b border-[#E5E0D8]"
       >
         <div>
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#9E8468] mb-1.5">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#9E8468] mb-1">
             <Sparkles className="w-3.5 h-3.5 text-[#9E8468]" />
             <span>{t.showcase.officialCollection}</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#1E1D1B]">
+          <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#1E1D1B]">
             {t.showcase.availableItems} ({filteredProducts.length})
           </h2>
         </div>
 
         {/* Sort Filter */}
-        <div className="flex items-center gap-2.5">
-          <SlidersHorizontal className="w-4 h-4 text-[#8C8377]" />
+        <div className="flex items-center gap-2">
+          <SlidersHorizontal className="w-4 h-4 text-[#8C8377] flex-shrink-0" />
           <select
             value={sortBy}
             onChange={(e) => {
               sound.playSwitch();
               setSortBy(e.target.value as any);
             }}
-            className="rounded-xl bg-[#F7F4EE] px-4 py-2.5 text-xs font-semibold text-[#1E1D1B] border border-[#E5E0D8] focus:outline-none focus:border-[#1E1D1B] shadow-2xs cursor-pointer"
+            className="w-full sm:w-auto rounded-xl bg-[#F7F4EE] px-3.5 py-2 text-xs font-semibold text-[#1E1D1B] border border-[#E5E0D8] focus:outline-none focus:border-[#1E1D1B] shadow-2xs cursor-pointer"
           >
             <option value="featured">{t.showcase.sortFeatured}</option>
             <option value="price-low">{t.showcase.sortPriceLow}</option>
@@ -94,13 +94,13 @@ export const DropShowcase: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="flex items-center gap-3 overflow-x-auto py-6 custom-scrollbar"
+        className="flex items-center gap-2 sm:gap-3 overflow-x-auto py-4 sm:py-6 custom-scrollbar"
       >
         {categories.map((cat) => (
           <button
             key={cat.id}
             onClick={() => handleCategorySelect(cat.id)}
-            className={`cursor-pointer whitespace-nowrap px-5 py-2.5 text-xs sm:text-sm transition-all duration-200 rounded-full ${
+            className={`cursor-pointer whitespace-nowrap px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm transition-all duration-200 rounded-full flex-shrink-0 ${
               activeCategory === cat.id
                 ? "bg-[#1E1D1B] text-white font-semibold shadow-md shadow-[#1E1D1B]/15"
                 : "bg-[#ECE7DE] text-[#4A433B] border border-[#DCD5C9] hover:bg-[#E2DDD3] hover:text-[#1E1D1B] font-semibold shadow-2xs"
@@ -111,8 +111,8 @@ export const DropShowcase: React.FC = () => {
         ))}
       </motion.div>
 
-      {/* 5. Product Grid with Staggered Entrance */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-2">
+      {/* 5. Product Grid with Strict Mobile Stacking (1 column on mobile, 2 on sm/md, 3 on lg, 4 on xl) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-6 mt-2">
         {filteredProducts.map((product, idx) => (
           <motion.div
             key={product.id}
@@ -124,6 +124,7 @@ export const DropShowcase: React.FC = () => {
               delay: (idx % 4) * 0.08,
               ease: [0.22, 1, 0.36, 1],
             }}
+            className="w-full"
           >
             <ProductCard product={product} />
           </motion.div>

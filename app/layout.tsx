@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" dir="ltr" className={inter.variable}>
-      <body className="min-h-screen bg-[#F5F3EF] text-[#1E1D1B] font-sans antialiased selection:bg-[#9E8468] selection:text-white">
+    <html lang="fr" dir="ltr" className={`${inter.variable} max-w-full overflow-x-hidden`}>
+      <body className="min-h-screen max-w-full overflow-x-hidden bg-[#F5F3EF] text-[#1E1D1B] font-sans antialiased selection:bg-[#9E8468] selection:text-white">
         {children}
       </body>
     </html>

@@ -26,9 +26,9 @@ export const CategoryHub: React.FC<CategoryHubProps> = ({ onSelectCategory, acti
   };
 
   return (
-    <section className="py-8 sm:py-12 border-b border-[#E5E0D8] w-full">
+    <section className="py-6 sm:py-10 border-b border-[#E5E0D8] w-full">
       {/* Header */}
-      <div className="flex items-center justify-between gap-4 mb-6">
+      <div className="flex items-center justify-between gap-4 mb-4 sm:mb-6">
         <div>
           <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#9E8468] mb-1">
             <Sparkles className="w-3.5 h-3.5 text-[#9E8468]" />
@@ -50,8 +50,8 @@ export const CategoryHub: React.FC<CategoryHubProps> = ({ onSelectCategory, acti
         </div>
       </div>
 
-      {/* 3 Prominent Category Tiles */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+      {/* 3 Prominent Category Tiles (Strict vertical stack on mobile) */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         {CATEGORY_TILES.map((tile, idx) => {
           const isCurrentActive = activeCategory === tile.id;
           const title =
@@ -79,7 +79,7 @@ export const CategoryHub: React.FC<CategoryHubProps> = ({ onSelectCategory, acti
                 ease: [0.22, 1, 0.36, 1],
               }}
               onClick={() => handleTileClick(tile.id)}
-              className={`group relative overflow-hidden rounded-3xl cursor-pointer p-6 aspect-[16/10] sm:aspect-[4/3] flex flex-col justify-between transition-all duration-300 border ${
+              className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl cursor-pointer p-5 sm:p-6 aspect-[16/9] sm:aspect-[4/3] flex flex-col justify-between transition-all duration-300 border ${
                 isCurrentActive
                   ? "border-[#1E1D1B] shadow-[0_12px_30px_rgba(40,30,20,0.12)] scale-[1.01]"
                   : "border-[#E5E0D8] shadow-[0_4px_20px_rgba(40,30,20,0.04)] hover:border-[#C4B5A2] hover:shadow-[0_12px_30px_rgba(40,30,20,0.08)]"
@@ -97,18 +97,18 @@ export const CategoryHub: React.FC<CategoryHubProps> = ({ onSelectCategory, acti
 
               {/* Top Row: Model Count Badge & Arrow */}
               <div className="relative z-10 flex items-center justify-between">
-                <span className="bg-white/95 text-slate-900 text-xs font-bold px-3 py-1 rounded-full shadow-xs backdrop-blur-xs">
+                <span className="bg-white/95 text-slate-900 text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-1 rounded-full shadow-xs backdrop-blur-xs">
                   {tile.countBadge}
                 </span>
 
-                <span className="h-9 w-9 rounded-full bg-white/20 text-white flex items-center justify-center backdrop-blur-xs group-hover:bg-white group-hover:text-slate-900 transition-colors">
+                <span className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-white/20 text-white flex items-center justify-center backdrop-blur-xs group-hover:bg-white group-hover:text-slate-900 transition-colors">
                   <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
                 </span>
               </div>
 
               {/* Bottom Content */}
               <div className="relative z-10 space-y-1 text-white">
-                <h3 className="text-lg sm:text-xl font-bold tracking-tight">
+                <h3 className="text-base sm:text-xl font-bold tracking-tight">
                   {title}
                 </h3>
                 <p className="text-xs text-slate-300 font-normal line-clamp-1">

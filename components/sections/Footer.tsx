@@ -45,45 +45,45 @@ export const Footer: React.FC = () => {
   const cleanPhone = STORE_CONFIG.whatsAppPhone.replace(/[^0-9]/g, "");
 
   return (
-    <footer className="w-full border-t border-[#E5E0D8] pt-12 sm:pt-16">
+    <footer className="w-full border-t border-[#E5E0D8] pt-8 sm:pt-14">
       {/* 3 Distinct Bento Container Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         
         {/* Box 1: Brand & Logistics (Left Card) */}
-        <div className="bg-[#F7F4EE] border border-[#E5DFD5] rounded-2xl p-6 shadow-[0_8px_30px_rgba(40,30,20,0.04)] hover:border-[#DCD5C9] hover:shadow-[0_8px_30px_rgba(40,30,20,0.06)] transition-all flex flex-col justify-between">
-          <div className="space-y-3.5">
+        <div className="bg-[#F7F4EE] border border-[#E5DFD5] rounded-2xl p-5 sm:p-6 shadow-[0_8px_30px_rgba(40,30,20,0.04)] hover:border-[#DCD5C9] hover:shadow-[0_8px_30px_rgba(40,30,20,0.06)] transition-all flex flex-col justify-between">
+          <div className="space-y-3">
             {/* Store Identity Badge */}
             <div className="flex items-center gap-2.5">
               <span className="h-8 w-8 rounded-xl bg-[#1E1D1B] text-[#FAF8F5] font-black text-xs flex items-center justify-center shadow-xs">
                 {STORE_CONFIG.brandMonogram}
               </span>
-              <span className="text-lg font-extrabold text-[#1E1D1B] tracking-tight">
+              <span className="text-base sm:text-lg font-extrabold text-[#1E1D1B] tracking-tight">
                 {STORE_CONFIG.brandName}
               </span>
             </div>
 
-            <p className="text-sm text-[#6B645C] leading-relaxed font-normal">
+            <p className="text-xs sm:text-sm text-[#6B645C] leading-relaxed font-normal">
               {t.footer.tagline}
             </p>
           </div>
 
           {/* Dedicated Delivery Pill Badge */}
-          <div className="mt-5">
-            <div className="bg-[#ECE7DE] text-[#2C2723] border border-[#DCD5C9] px-3.5 py-2 rounded-xl inline-flex items-center gap-2 font-medium text-xs shadow-xs w-full sm:w-auto">
+          <div className="mt-4 sm:mt-5">
+            <div className="bg-[#ECE7DE] text-[#2C2723] border border-[#DCD5C9] px-3.5 py-2 rounded-xl inline-flex items-center gap-2 font-medium text-xs shadow-xs w-full">
               <MapPin className="w-4 h-4 text-[#9E8468] flex-shrink-0" />
-              <span>{t.footer.deliveryNotice}</span>
+              <span className="truncate">{t.footer.deliveryNotice}</span>
             </div>
           </div>
         </div>
 
         {/* Box 2: Quick Links / Navigation (Middle Card) */}
-        <div className="bg-[#F7F4EE] border border-[#E5DFD5] rounded-2xl p-6 shadow-[0_8px_30px_rgba(40,30,20,0.04)] hover:border-[#DCD5C9] hover:shadow-[0_8px_30px_rgba(40,30,20,0.06)] transition-all flex flex-col justify-between">
+        <div className="bg-[#F7F4EE] border border-[#E5DFD5] rounded-2xl p-5 sm:p-6 shadow-[0_8px_30px_rgba(40,30,20,0.04)] hover:border-[#DCD5C9] hover:shadow-[0_8px_30px_rgba(40,30,20,0.06)] transition-all flex flex-col justify-between">
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-[#8C827A] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#8C827A] mb-3 sm:mb-4">
               {t.footer.quickLinksTitle}
             </h4>
 
-            <ul className="space-y-1.5 text-xs sm:text-sm">
+            <ul className="space-y-1 text-xs sm:text-sm">
               <li>
                 <a
                   href="#drop-showcase"
@@ -124,10 +124,10 @@ export const Footer: React.FC = () => {
               className="bg-[#1F4E3D] hover:bg-[#163A2E] text-white border border-[#1F4E3D] px-3.5 py-2.5 rounded-xl flex items-center justify-between text-xs font-semibold transition-colors shadow-sm shadow-[#1F4E3D]/15"
             >
               <div className="flex items-center gap-2">
-                <MessageCircle className="w-4 h-4 text-white fill-white" />
+                <MessageCircle className="w-4 h-4 text-white fill-white flex-shrink-0" />
                 <span>{t.footer.clientService}</span>
               </div>
-              <span className="text-[11px] font-bold text-[#A3D9C9] bg-[#163A2E] px-2 py-0.5 rounded-full">
+              <span className="text-[10px] sm:text-[11px] font-bold text-[#A3D9C9] bg-[#163A2E] px-2 py-0.5 rounded-full">
                 En ligne
               </span>
             </a>
@@ -135,10 +135,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Box 3: VIP Alerts & WhatsApp Input (Right Card) */}
-        <div className="bg-[#F7F4EE] border border-[#E5DFD5] rounded-2xl p-6 shadow-[0_8px_30px_rgba(40,30,20,0.04)] hover:border-[#DCD5C9] hover:shadow-[0_8px_30px_rgba(40,30,20,0.06)] transition-all flex flex-col justify-between">
-          <div className="space-y-2.5">
+        <div className="bg-[#F7F4EE] border border-[#E5DFD5] rounded-2xl p-5 sm:p-6 shadow-[0_8px_30px_rgba(40,30,20,0.04)] hover:border-[#DCD5C9] hover:shadow-[0_8px_30px_rgba(40,30,20,0.06)] transition-all flex flex-col justify-between">
+          <div className="space-y-2">
             <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#8C827A]">
-              <Sparkles className="w-3.5 h-3.5 text-[#9E8468] fill-[#9E8468]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#9E8468] fill-[#9E8468] flex-shrink-0" />
               <span>{t.footer.vipAlertsTitle}</span>
             </div>
 
@@ -156,11 +156,11 @@ export const Footer: React.FC = () => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
-                className="flex-1 bg-white border border-[#DCD5C9] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-[#1E1D1B] placeholder:text-[#9C948A] focus:ring-2 focus:ring-[#1E1D1B] focus:border-[#1E1D1B] focus:outline-none shadow-xs"
+                className="flex-1 bg-white border border-[#DCD5C9] rounded-xl px-3 py-2.5 text-xs sm:text-sm text-[#1E1D1B] placeholder:text-[#9C948A] focus:ring-2 focus:ring-[#1E1D1B] focus:border-[#1E1D1B] focus:outline-none shadow-xs"
               />
               <button
                 type="submit"
-                className="bg-[#1E1D1B] hover:bg-[#33302B] px-4 py-2.5 rounded-xl text-white font-semibold text-xs flex items-center justify-center transition-colors shadow-xs cursor-pointer active:scale-95"
+                className="bg-[#1E1D1B] hover:bg-[#33302B] px-3.5 py-2.5 rounded-xl text-white font-semibold text-xs flex items-center justify-center transition-colors shadow-xs cursor-pointer active:scale-95 flex-shrink-0"
               >
                 {subscribed ? (
                   <Check className="w-4 h-4 text-[#A3D9C9]" />
@@ -185,12 +185,12 @@ export const Footer: React.FC = () => {
       </div>
 
       {/* Sub-footer Bar */}
-      <div className="border-t border-[#E5E0D8] pt-6 mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#8C827A] gap-3 pb-2">
+      <div className="border-t border-[#E5E0D8] pt-5 mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] sm:text-xs text-[#8C827A] gap-2.5 pb-2 text-center sm:text-left">
         <div>
           © {new Date().getFullYear()} {t.footer.copyright}
         </div>
         <div className="flex items-center gap-2 text-[#5A524A] font-medium">
-          <ShieldCheck className="w-4 h-4 text-[#1F4E3D]" />
+          <ShieldCheck className="w-3.5 h-3.5 text-[#1F4E3D] flex-shrink-0" />
           <span>{t.footer.badge}</span>
         </div>
       </div>
